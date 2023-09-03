@@ -43,11 +43,9 @@ export const Movies = () => {
     }
   }, [query, page]);
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    const newQuery = evt.target.elements.query.value.trim();
+  const handleSubmit = newQuery => {
     if (!newQuery) {
-      alert('Enter movie name');
+      alert('Введіть назву фільму');
       return;
     }
     setQuery(newQuery);
