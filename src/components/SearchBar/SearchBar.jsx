@@ -1,6 +1,6 @@
 export const SearchBar = ({ handleSubmit }) => {
   const handleFormSubmit = evt => {
-    // evt.preventDefault();
+    evt.preventDefault();
     if (evt.target.elements.query.value.trim() === '') {
       alert('Enter movie');
       return;

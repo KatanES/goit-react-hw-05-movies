@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-// import { Location } from 'react-router-dom';
 export const MovieCard = ({ movieList }) => {
   return (
     <main>

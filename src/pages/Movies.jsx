@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLocation } from 'react';
 import { Loader } from '../components/Loader';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { fetchMovies } from 'api';
@@ -10,11 +10,11 @@ export const Movies = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const changeQuery = newQuery => {
-    setQuery(`${Date.now()}/${newQuery}`);
-    setMovieList([]);
-    setPage(1);
-  };
+  // const changeQuery = newQuery => {
+  //   setQuery(`${Date.now()}/${newQuery}`);
+  //   setMovieList([]);
+  //   setPage(1);
+  // };
 
   useEffect(() => {
     const loadResult = async () => {
@@ -28,13 +28,13 @@ export const Movies = () => {
 
           setLoading(false);
         } else {
-          alert('No movies found!');
+          alert('Movies are not found!');
           setLoading(false);
         }
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false); // Переміщено в finally
+        setLoading(false);
       }
     };
 
@@ -45,12 +45,13 @@ export const Movies = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    if (evt.target.elements.query.value.trim() === '') {
+    const newQuery = evt.target.elements.query.value.trim();
+    if (!newQuery) {
       alert('Enter movie name');
       return;
     }
-    changeQuery(evt.target.elements.query.value);
-    evt.target.reset();
+    setQuery(newQuery);
+    setPage(1);
   };
 
   return (
