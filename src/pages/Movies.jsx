@@ -57,6 +57,7 @@ export const Movies = () => {
     <div>
       <SearchBar handleSubmit={handleSubmit} />
       <MovieCard movieList={movieList} />
+      {loading && <Loader />}
     </div>
   );
 };
