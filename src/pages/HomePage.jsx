@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { fetchMovies } from 'api';
 
 const HomePage = () => {
-  const [query, setQuery] = useState('');
+  const [query] = useState('');
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
           );
           // success(query);
         } else {
-          alert('Фільми не знайдено!');
+          alert('Movies are not found!');
         }
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ const HomePage = () => {
     if (query && page) {
       fetchData();
     }
-  }, [query, page]);
+  }, [query, page, movies]);
 
   return (
     <div>
