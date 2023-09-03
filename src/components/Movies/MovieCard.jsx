@@ -1,18 +1,18 @@
-export const MovieCard = ({ movie }) => {
+import { NavLink } from 'react-router-dom';
+import { Location } from 'react-router-dom';
+export const MovieCard = ({ movieList }) => {
   return (
-    <div>
-      <img src={movie.poster_path} alt={movie.title} />
-      <h1>{movie.title}</h1>
-      <p>({movie.release_date})</p>
-      <p>User score: {movie.vote_average}</p>
-      <h2>Overview</h2>
-      <p>{movie.overview}</p>
-      <h3>Genres</h3>
+    <main>
+      <h1>Search results</h1>
       <ul>
-        {movie.genres.map(genre => (
-          <li key={genre.id}>{genre.name}</li>
+        {movieList.map(movie => (
+          <li key={movie.id}>
+            <NavLink to={`/movies/${movie.id}`}>
+              {movie.original_title || movie.name}
+            </NavLink>
+          </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
