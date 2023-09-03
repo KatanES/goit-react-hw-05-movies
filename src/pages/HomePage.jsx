@@ -1,40 +1,40 @@
-import { MovieCard } from 'components/Movies/MovieCard';
 import { useState, useEffect } from 'react';
-import { fetchMovies } from 'api';
+import { getTrendingList } from 'api';
+import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const HomePage = () => {
-  const [query] = useState('');
-  const [movies, setMovies] = useState([]);
-  const [page] = useState(1);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMoviesList = async () => {
       try {
-        const movieData = await fetchMovies('day', page);
-        if (movies.length > 0) {
-          setMovies(prevMovies =>
-            page > 1 ? [...prevMovies, ...movieData] : movieData
-          );
-          // success(query);
-        } else {
-          alert('Movies are not found!');
-        }
+        const response = await getTrendingList(
+          '/trending/all/day?language=en-US'
+        );
+        setTrendingMovies(response.results);
       } catch (error) {
         console.log(error);
+      } finally {
       }
     };
-    if (query && page) {
-      fetchData();
-    }
-  }, [query, page, movies]);
+    fetchMoviesList();
+  }, []);
 
   return (
-    <div>
-      <h2>Main page</h2>
-      {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
+    <main>
+      <h1>Trending today</h1>
+      <ul>
+        {trendingMovies.map(movie => (
+          <li key={movie.id}>
+            <NavLink to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.original_title || movie.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 };
 
