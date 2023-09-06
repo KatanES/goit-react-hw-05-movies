@@ -10,12 +10,6 @@ export const Movies = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // const changeQuery = newQuery => {
-  //   setQuery(`${Date.now()}/${newQuery}`);
-  //   setMovieList([]);
-  //   setPage(1);
-  // };
-
   useEffect(() => {
     const loadResult = async () => {
       try {
@@ -45,7 +39,7 @@ export const Movies = () => {
 
   const handleSubmit = newQuery => {
     if (!newQuery) {
-      alert('Введіть назву фільму');
+      alert('Enter movie name');
       return;
     }
     setQuery(newQuery);
