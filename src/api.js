@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const API_KEY = 'ecd1ef739d214e488f3f5be2896ac87b';
 axios.defaults.baseURL = `https://api.themoviedb.org/3`;
@@ -71,5 +72,27 @@ export const getMovieById = async movieId => {
   } catch (error) {
     console.error('Could not get movie data');
     throw error;
+  }
+};
+
+export const getCast = async movieId => {
+  try {
+    const response = await axios.get(`/movie/${movieId}/credits`, {
+      options,
+      params,
+    });
+    console.log(response);
+    if (response) {
+      const data = response.data;
+      console.log(data);
+      return data;
+    } else {
+      throw new Error('Empty response');
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error('Something went wrong!', {
+      icon: '🤯',
+    });
   }
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieById } from 'api';
+import { MovieDetailsComponent } from 'components/MovieDetails/MovieDetails';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -22,13 +23,7 @@ const MovieDetails = () => {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div>
-      <h2>{movieData.original_title || movieData.name}</h2>
-      <p>Description: {movieData.overview}</p>
-      <p>Rate: {movieData.vote_average}</p>
-    </div>
-  );
+  return <MovieDetailsComponent movieData={movieData} />;
 };
 
 export default MovieDetails;

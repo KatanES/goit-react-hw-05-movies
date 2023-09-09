@@ -4,9 +4,8 @@ import { Container, Header, Link } from './App.styled';
 import HomePage from 'pages/HomePage';
 import Movies from 'pages/Movies';
 import MovieDetails from 'pages/MovieDetails';
-import Cast from 'pages/Cast';
+import { Cast } from './Cast/Cast';
 import Reviews from 'pages/Reviews';
-// import NotFound from 'path/to/pages/NotFound';
 
 export const App = () => {
   return (
