@@ -60,9 +60,9 @@ export const fetchMovies = async (query, page) => {
   }
 };
 
-export const getMovieById = async movie_id => {
+export const getMovieById = async movieId => {
   try {
-    const response = await axios.get(`/movie/${movie_id}`, {
+    const response = await axios.get(`/movie/${movieId}`, {
       params: {
         api_key: API_KEY,
       },

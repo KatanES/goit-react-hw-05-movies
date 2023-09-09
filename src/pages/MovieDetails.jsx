@@ -3,20 +3,20 @@ import { useParams } from 'react-router-dom';
 import { getMovieById } from 'api';
 
 const MovieDetails = () => {
-  const { movie_id } = useParams();
+  const { movieId } = useParams();
   const [movieData, setMovieData] = useState(null);
 
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        const data = await getMovieById(movie_id);
+        const data = await getMovieById(movieId);
         setMovieData(data);
       } catch (error) {
         console.error('Fail to get data about the movie');
       }
     };
     fetchMovieData();
-  }, [movie_id]);
+  }, [movieId]);
 
   if (!movieData) {
     return <div>Loading...</div>;
