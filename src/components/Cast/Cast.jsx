@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { FcDisclaimer } from 'react-icons/fc';
 import { getCast } from 'api';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState({});
 
@@ -43,8 +43,8 @@ export const Cast = () => {
                   loading="lazy"
                   alt={actor.original_name}
                 />
-                <li>{actor.name}</li>
-                <li>Character: {actor.character}</li>
+                <p>{actor.name}</p>
+                <p>Character: {actor.character}</p>
               </li>
             ))}
         </ul>
@@ -57,3 +57,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

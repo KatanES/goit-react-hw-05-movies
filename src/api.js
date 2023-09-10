@@ -78,12 +78,34 @@ export const getMovieById = async movieId => {
 export const getCast = async movieId => {
   try {
     const response = await axios.get(`/movie/${movieId}/credits`, {
-      options,
+      ...options,
       params,
     });
     console.log(response);
     if (response) {
       const data = response.data;
+      console.log(data);
+      return data;
+    } else {
+      throw new Error('Empty response');
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error('Something went wrong!', {
+      icon: '🤯',
+    });
+  }
+};
+
+export const getReviews = async movieId => {
+  try {
+    const response = await axios.get(`/movie/${movieId}/reviews`, {
+      ...options,
+      params,
+    });
+    console.log(response);
+    if (response) {
+      const data = response.data.results;
       console.log(data);
       return data;
     } else {
