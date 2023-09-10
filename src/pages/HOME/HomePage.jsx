@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrendingList } from 'API/api';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import TrendingMovies from 'components/Trending movies/TrendingMovies';
 import { HomePageContainer, HomePageTitle } from './HomePage.styled';
 

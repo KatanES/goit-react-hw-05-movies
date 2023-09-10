@@ -7,7 +7,6 @@ import {
   ReviewsPageContainer,
   ReviewsPageTitle,
   ReviewsList,
-  ReviewsItem,
 } from './Reviews.styled';
 
 import 'react-toastify/dist/ReactToastify.css';
