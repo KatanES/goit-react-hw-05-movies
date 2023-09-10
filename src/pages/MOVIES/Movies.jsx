@@ -3,6 +3,7 @@ import { Loader } from '../../components/Loader';
 import { SearchBar } from 'components/SearchBar/SearchBar';
 import { fetchMovies } from 'API/api';
 import { MovieCard } from 'components/Movies/MovieCard';
+import { MoviePage } from './Movies.styled';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
@@ -47,11 +48,11 @@ export const Movies = () => {
   };
 
   return (
-    <div>
+    <MoviePage>
       <SearchBar handleSubmit={handleSubmit} />
       <MovieCard movieList={movieList} />
       {loading && <Loader />}
-    </div>
+    </MoviePage>
   );
 };
 

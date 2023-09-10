@@ -1,12 +1,10 @@
-import { HiMenuAlt3 } from 'react-icons/hi';
+// import { HiMenuAlt3 } from 'react-icons/hi';
 import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { MovieList, MovieItem, Poster } from './TrendingMovies.styled';
 const TrendingMovies = ({ films }) => {
   const location = useLocation();
-  // if(!films){
-  //   return null;
-  // }
+
   const imgBaseUrl = 'https://image.tmdb.org/t/p/w300';
   return (
     <MovieList>

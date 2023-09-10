@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const DetailsPageContainer = styled.main`
   padding-top: 64px;
@@ -81,5 +82,21 @@ export const DetailsBtn = styled.button`
   &:focus {
     outline: none;
     color: white;
+  }
+`;
+
+export const ScrollToTopLink = styled(Link)`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #555;
   }
 `;

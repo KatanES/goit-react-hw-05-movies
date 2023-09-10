@@ -6,11 +6,11 @@ import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { getMovieById } from 'API/api';
 import {
   DetailsPageContainer,
-  DetailsMovieList,
   DetailsMovieItem,
   DetailsPoster,
   MovieDetailsText,
   DetailsBtn,
+  ScrollToTopLink,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
@@ -42,6 +42,7 @@ const MovieDetails = () => {
 
   return (
     <DetailsPageContainer>
+      <ScrollToTopLink to="">Scroll up</ScrollToTopLink>{' '}
       <DetailsBtn type="button">
         <Link to={goBackLink.current}>
           <HiArrowNarrowLeft size={32} />

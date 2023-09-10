@@ -6,7 +6,7 @@ import { HomePageContainer, HomePageTitle } from './HomePage.styled';
 
 const HomePage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     const fetchMoviesList = async () => {

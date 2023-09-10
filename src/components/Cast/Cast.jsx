@@ -8,7 +8,6 @@ import {
   CastItem,
   CastPoster,
   CastPageContainer,
-  CastPageTitle,
   CastDescription,
 } from './Cast.styled';
 

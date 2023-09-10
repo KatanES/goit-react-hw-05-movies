@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FcDisclaimer } from 'react-icons/fc';
+import {
+  ReviewsPageContainer,
+  ReviewsPageTitle,
+  ReviewsList,
+  ReviewsItem,
+} from './Reviews.styled';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,20 +35,19 @@ const Reviews = () => {
 
   return (
     <>
-      <div>
-        <h2>Movie Reviews</h2>
-        <ul>
+      <ReviewsPageContainer>
+        <ReviewsPageTitle>Movie Reviews</ReviewsPageTitle>
+        <ReviewsList>
           {reviews.map(review => (
-            <li key={review.id}>
-              <p>{review.author}</p>
-              <p>{review.content}</p>
-            </li>
+            <p key={review.id}>
+              <strong>{review.author}:</strong> {review.content}
+            </p>
           ))}
-        </ul>
-      </div>
+        </ReviewsList>
+      </ReviewsPageContainer>
       {reviews.length === 0 && (
-        <p>
-          <FcDisclaimer /> We don't have any reviews for this movie.
+        <p className="no-reviews">
+          <FcDisclaimer /> Sorry, We don't have any reviews
         </p>
       )}
     </>
