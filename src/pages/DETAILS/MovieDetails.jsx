@@ -4,7 +4,14 @@ import { Loader } from 'components/Loader';
 import { FcOpenedFolder, FcConferenceCall } from 'react-icons/fc';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { getMovieById } from 'API/api';
-// import { MovieDetailsComponent } from 'components/MovieDetails/MovieDetails';
+import {
+  DetailsPageContainer,
+  DetailsMovieList,
+  DetailsMovieItem,
+  DetailsPoster,
+  MovieDetailsText,
+  DetailsBtn,
+} from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -28,39 +35,39 @@ const MovieDetails = () => {
     return <div>Loading...</div>;
   }
 
-  // return <MovieDetailsComponent movieData={movieData} />;
   const { original_title, genres, overview, poster_path, vote_average } =
     movieData || {};
   const score = vote_average * 10;
   const scoreToFixed = score.toFixed(2);
 
   return (
-    <main>
-      <button type="button">
+    <DetailsPageContainer>
+      <DetailsBtn type="button">
         <Link to={goBackLink.current}>
           <HiArrowNarrowLeft size={32} />
-          Go back
         </Link>
-      </button>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-        widrh={220}
-        height={280}
-        loading="lazy"
-        alt="poster"
-      />
-      <div>
-        <h2>{original_title}</h2>
-        <h3>User score: {scoreToFixed}%</h3>
-        <h3>Overview</h3>
-        <p>{overview} </p>
-        <h3>Genres</h3>
-        <p>
-          {genres &&
-            genres.length &&
-            genres.map(({ id, name }) => <li key={id}>{name}</li>)}
-        </p>
-      </div>
+      </DetailsBtn>
+      <DetailsMovieItem>
+        <DetailsPoster
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          widrh={220}
+          height={280}
+          loading="lazy"
+          alt="poster"
+        />
+        <MovieDetailsText>
+          <h2>{original_title}</h2>
+          <h3>User score: {scoreToFixed}%</h3>
+          <h3>Overview</h3>
+          <p>{overview}</p>
+          <h3>Genres</h3>
+          <ul>
+            {genres &&
+              genres.length &&
+              genres.map(({ id, name }) => <li key={id}>{name}</li>)}
+          </ul>
+        </MovieDetailsText>
+      </DetailsMovieItem>
       <div>
         <h4>Additional information</h4>
         <div>
@@ -85,7 +92,7 @@ const MovieDetails = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </main>
+    </DetailsPageContainer>
   );
 };
 export default MovieDetails;
