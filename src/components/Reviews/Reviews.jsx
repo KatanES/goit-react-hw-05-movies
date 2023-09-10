@@ -1,4 +1,4 @@
-import { getReviews } from 'api';
+import { getReviews } from 'API/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';

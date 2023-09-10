@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FcDisclaimer } from 'react-icons/fc';
-import { getCast } from 'api';
+import { getCast } from 'API/api';
 
 const Cast = () => {
   const { movieId } = useParams();

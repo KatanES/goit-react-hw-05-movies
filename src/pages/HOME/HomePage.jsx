@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTrendingList } from 'api';
+import { getTrendingList } from 'API/api';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 

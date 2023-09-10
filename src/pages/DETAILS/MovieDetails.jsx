@@ -3,7 +3,7 @@ import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { FcOpenedFolder, FcConferenceCall } from 'react-icons/fc';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
-import { getMovieById } from 'api';
+import { getMovieById } from 'API/api';
 // import { MovieDetailsComponent } from 'components/MovieDetails/MovieDetails';
 
 const MovieDetails = () => {

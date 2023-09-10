@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Loader } from '../components/Loader';
+import { Loader } from '../../components/Loader';
 import { SearchBar } from 'components/SearchBar/SearchBar';
-import { fetchMovies } from 'api';
+import { fetchMovies } from 'API/api';
 import { MovieCard } from 'components/Movies/MovieCard';
 
 export const Movies = () => {
