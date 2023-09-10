@@ -1,23 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import { Container, Header, Link } from './App.styled';
 
 import HomePage from 'pages/HOME/HomePage';
 import Movies from 'pages/MOVIES/Movies';
 import MovieDetails from 'pages/DETAILS/MovieDetails';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+import Cast from '../components/Cast/Cast';
+import Reviews from '../components/Reviews/Reviews';
+import Layout from '../components/Layout/Layout';
 
 export const App = () => {
   return (
-    <Container>
-      <Header>
-        <nav>
-          <Link to="/">Home</Link>
-
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </Header>
-      <Routes>
+    <Routes>
+      <Route path="/" element={<Layout />} exact>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/movies" element={<Movies />}></Route>
         <Route path="/movies/:movieId" element={<MovieDetails />}></Route>
@@ -27,7 +20,7 @@ export const App = () => {
         </Route>
 
         <Route path="*" element={<div>404 Not Found</div>} />
-      </Routes>
-    </Container>
+      </Route>
+    </Routes>
   );
 };
