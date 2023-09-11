@@ -18,7 +18,7 @@ const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
   const location = useLocation();
   const goBackLink = useRef(location.state?.from || '/');
-  const searchParams = new URLSearchParams(location.search);
+  // const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
     const fetchMovieData = async () => {
