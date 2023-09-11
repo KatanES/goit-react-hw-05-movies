@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoSearch } from 'react-icons/go';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   SearchInput,
@@ -11,7 +11,6 @@ import {
 
 export const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {
