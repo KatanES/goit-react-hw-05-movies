@@ -11,14 +11,12 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
 font-family: "Gill Sans", sans-serif;    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: flex;
     flex-direction: column;
     justify-content: center;
-align-items:center;
-    /* background-image: url(https://as2.ftcdn.net/v2/jpg/02/79/23/49/1000_F_279234996_kJhcULhaJsfQJdryAaJmfhmuzwpOjNtK.jpg); */
   background-image: url(https://img.freepik.com/free-photo/clapperboard-popcorn_23-2147775681.jpg?w=1800&t=st=1694351573~exp=1694352173~hmac=5db78882fe3ae6bfe3b1dd83e809bb7484ddc94765e08b587f6edc75f8851349);
     background-size: cover;
     background-position: center top;

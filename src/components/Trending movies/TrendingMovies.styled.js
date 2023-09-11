@@ -2,7 +2,6 @@ import styled from 'styled-components';
 export const MovieList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   margin-bottom: 30px;
   margin-top: 20px;
   overflow-y: auto;
@@ -16,10 +15,6 @@ export const MovieItem = styled.li`
 
   padding: 0; /* Змініть відступи для кожного елемента */
   box-sizing: border-box; /* Забезпечте правильний розмір включаючи відступи */
-
-  /* &:nth-child(odd) {
-    padding-right: 8px; 
-  } */
 
   a {
     text-decoration: none;

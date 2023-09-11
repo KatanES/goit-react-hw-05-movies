@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto 30px; /* Додайте відступ знизу і центруйте контейнер по горизонталі */
   padding: 30px 15px; /* Зменшили відступи зліва і праворуч, щоб зміст поміщався */
 
-  overflow: hidden;
+  overflow: scroll;
   border-radius: 10px;
   box-shadow: 0px 2px 15px 2px rgba(120, 120, 120, 1);
   background: rgba(255, 255, 255, 0.7);
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 
   max-height: calc(100vh - 64px); /* Обмеження висоти контейнера */
