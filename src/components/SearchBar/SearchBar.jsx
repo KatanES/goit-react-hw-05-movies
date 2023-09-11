@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoSearch } from 'react-icons/go';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import {
   SearchInput,
@@ -12,6 +12,7 @@ import {
 export const SearchBar = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     // Оновлення параметра "query" в URL при зміні стану "query"
@@ -29,7 +30,8 @@ export const SearchBar = () => {
       return;
     }
     // Оновлення стану "query" при відправці форми
-    setQuery(query);
+    setSearchParams('query', query);
+    navigate(`?${searchParams.toString()}`);
   };
 
   return (
