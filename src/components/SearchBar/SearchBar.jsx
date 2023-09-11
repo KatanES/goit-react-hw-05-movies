@@ -11,7 +11,7 @@ import {
 
 export const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {

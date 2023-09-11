@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Movies from 'pages/MOVIES/Movies';
 
 const API_KEY = 'ecd1ef739d214e488f3f5be2896ac87b';
 axios.defaults.baseURL = `https://api.themoviedb.org/3`;
