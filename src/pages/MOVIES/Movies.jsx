@@ -4,12 +4,23 @@ import { SearchBar } from 'components/SearchBar/SearchBar';
 import { fetchMovies } from 'API/api';
 import { MovieCard } from 'components/Movies/MovieCard';
 import { MoviePage } from './Movies.styled';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 export const Movies = () => {
   const [query, setQuery] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [searchParams] = useSearchParams(); // Отримання параметрів з URL
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Перевірка наявності параметру "query" в URL і оновлення стану "query"
+    const queryParams = searchParams.get('query');
+    if (queryParams) {
+      setQuery(queryParams);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const loadResult = async () => {
@@ -40,13 +51,14 @@ export const Movies = () => {
 
   const handleSubmit = newQuery => {
     if (!newQuery) {
-      alert('Enter movie name');
+      alert('Введіть назву фільму');
       return;
     }
     setQuery(newQuery);
     setPage(1);
+    // Переходьте на сторінку з результатами пошуку
+    navigate(`/movies?query=${newQuery}`);
   };
-
   return (
     <MoviePage>
       <SearchBar handleSubmit={handleSubmit} />

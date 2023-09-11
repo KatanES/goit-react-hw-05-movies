@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Movies from 'pages/MOVIES/Movies';
 
 const API_KEY = 'ecd1ef739d214e488f3f5be2896ac87b';
 axios.defaults.baseURL = `https://api.themoviedb.org/3`;
@@ -39,15 +40,18 @@ export const getTrendingList = async () => {
 
 export const fetchMovies = async (query, page) => {
   try {
-    const response = await axios.get(`/search/movie?language=en-US`, {
-      params: {
-        api_key: API_KEY,
-        query: query,
+    const response = await axios.get(
+      `/search/movie?language=en-US?query=${query}`,
+      {
+        params: {
+          api_key: API_KEY,
+          query: query,
 
-        language: 'en-US',
-        page: page,
-      },
-    });
+          language: 'en-US',
+          page: page,
+        },
+      }
+    );
 
     if (response.status === 200) {
       const data = response.data;
