@@ -18,7 +18,7 @@ const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
   const location = useLocation();
   const goBackLink = useRef(location.state?.from || '/');
-  // const searchParams = new URLSearchParams(location.search);
+  const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -45,7 +45,7 @@ const MovieDetails = () => {
     <DetailsPageContainer>
       <ScrollToTopLink to="">Scroll up</ScrollToTopLink>{' '}
       <DetailsBtn type="button">
-        <Link to={goBackLink.current}>
+        <Link to={`/movies?query=${searchParams.get('query') || '/'}`}>
           <HiArrowNarrowLeft size={32} />
         </Link>
       </DetailsBtn>

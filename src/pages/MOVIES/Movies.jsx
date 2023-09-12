@@ -11,11 +11,10 @@ export const Movies = () => {
   const [movieList, setMovieList] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchParams] = useSearchParams(); // Отримання параметрів з URL
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Перевірка наявності параметру "query" в URL і оновлення стану "query"
     const queryParams = searchParams.get('query');
     if (queryParams) {
       setQuery(queryParams);
@@ -51,12 +50,11 @@ export const Movies = () => {
 
   const handleSubmit = newQuery => {
     if (!newQuery) {
-      alert('Введіть назву фільму');
+      alert('Enter movie name');
       return;
     }
     setQuery(newQuery);
     setPage(1);
-    // Переходьте на сторінку з результатами пошуку
     navigate(`/movies?query=${newQuery}`);
   };
   return (

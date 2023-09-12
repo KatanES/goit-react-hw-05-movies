@@ -40,7 +40,7 @@ export const getTrendingList = async () => {
 export const fetchMovies = async (query, page) => {
   try {
     const response = await axios.get(
-      `/search/movie?language=en-US?query=${query}`,
+      `/search/movie?language=en-US&query=${query}`,
       {
         params: {
           api_key: API_KEY,
