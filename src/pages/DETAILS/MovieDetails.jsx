@@ -17,7 +17,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState({});
   const location = useLocation();
-  const goBackLink = useRef(location.state?.from || '/');
+  // const goBackLink = useRef(location.state?.from || '/');
   const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
