@@ -1,11 +1,5 @@
-import { useState, useEffect } from 'react';
-import {
-  Outlet,
-  useParams,
-  useLocation,
-  Link,
-  Suspense,
-} from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { FcOpenedFolder, FcConferenceCall } from 'react-icons/fc';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
