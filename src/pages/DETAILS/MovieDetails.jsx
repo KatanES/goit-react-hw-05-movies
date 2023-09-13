@@ -1,36 +1,44 @@
-import { useEffect, useState, Suspense } from 'react';
-import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import {
+  Outlet,
+  useParams,
+  useLocation,
+  Link,
+  Suspense,
+} from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { FcOpenedFolder, FcConferenceCall } from 'react-icons/fc';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { getMovieById } from 'API/api';
+
 import {
   DetailsPageContainer,
   DetailsMovieItem,
   DetailsPoster,
   MovieDetailsText,
   DetailsBtn,
-  ScrollToTopLink,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState({});
   const location = useLocation();
-  // const goBackLink = useRef(location.state?.from || '/');
-  const searchParams = new URLSearchParams(location.search);
 
   useEffect(() => {
-    const fetchMovieData = async () => {
-      try {
-        const data = await getMovieById(movieId);
-        setMovieData(data);
-      } catch (error) {
-        console.error('Fail to get data about the movie');
-      }
-    };
-    fetchMovieData();
+    getMovieById(movieId).then(data => setMovieData(data));
   }, [movieId]);
+
+  // useEffect(() => {
+  //   const fetchMovieData = async () => {
+  //     try {
+  //       const data = await getMovieById(movieId);
+  //       setMovieData(data);
+  //     } catch (error) {
+  //       console.error('Fail to get data about the movie');
+  //     }
+  //   };
+  //   fetchMovieData();
+  // }, [movieId]);
 
   if (!movieData) {
     return <div>Loading...</div>;
@@ -41,11 +49,18 @@ const MovieDetails = () => {
   const score = vote_average * 10;
   const scoreToFixed = score.toFixed(2);
 
+  // const handleGoBack = () => {
+  //   if (location.state && location.state.from) {
+  //     navigate(location.state.from);
+  //   } else {
+  //     navigate('/');
+  //   }
+  // };
+
   return (
     <DetailsPageContainer>
-      <ScrollToTopLink to="">Scroll up</ScrollToTopLink>{' '}
-      <DetailsBtn type="button">
-        <Link to={`/movies?query=${searchParams.get('query') || '/'}`}>
+      <DetailsBtn type="button" onClick={handleGoBack}>
+        <Link to={location.state?.from ?? '/'}>
           <HiArrowNarrowLeft size={32} />
         </Link>
       </DetailsBtn>

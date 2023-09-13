@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GoSearch } from 'react-icons/go';
-import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import {
   SearchInput,
@@ -9,31 +8,21 @@ import {
   SearchBarForm,
 } from './SearchBar.styled';
 
-export const SearchBar = () => {
+const SearchBar = ({ onChange }) => {
   const [query, setQuery] = useState('');
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    // Оновлення параметра "query" в URL при зміні стану "query"
-    searchParams.set('query', query);
-    navigate(`?${searchParams.toString()}`);
-  }, [query, searchParams, navigate]);
-
-  const inputChange = event => {
-    setQuery(event.target.value);
+  const inputChange = evt => {
+    setQuery(evt.target.value);
   };
 
-  const handleSearch = event => {
-    event.preventDefault();
+  const handleSearch = evt => {
+    evt.preventDefault();
     if (!query.trim()) {
       return;
     }
-    // Оновлення стану "query" при відправці форми
-    setSearchParams('query', query);
-    navigate(`?${searchParams.toString()}`);
+    onChange(query);
+    setQuery('');
   };
-
   return (
     <SearchBarContainer>
       <SearchBarForm onSubmit={handleSearch}>
@@ -53,3 +42,5 @@ export const SearchBar = () => {
     </SearchBarContainer>
   );
 };
+
+export default SearchBar;
