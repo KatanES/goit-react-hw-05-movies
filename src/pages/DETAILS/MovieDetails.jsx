@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Outlet,
   useParams,
@@ -59,7 +59,7 @@ const MovieDetails = () => {
 
   return (
     <DetailsPageContainer>
-      <DetailsBtn type="button" onClick={handleGoBack}>
+      <DetailsBtn type="button">
         <Link to={location.state?.from ?? '/'}>
           <HiArrowNarrowLeft size={32} />
         </Link>
