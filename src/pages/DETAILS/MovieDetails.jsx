@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { Loader } from 'components/Loader';
 import { FcOpenedFolder, FcConferenceCall } from 'react-icons/fc';
@@ -17,6 +17,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState({});
   const location = useLocation();
+  const goBackLink = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     getMovieById(movieId).then(data => setMovieData(data));
@@ -54,7 +55,7 @@ const MovieDetails = () => {
   return (
     <DetailsPageContainer>
       <DetailsBtn type="button">
-        <Link to={location.state?.from ?? '/'}>
+        <Link to={goBackLink.current}>
           <HiArrowNarrowLeft size={32} />
         </Link>
       </DetailsBtn>
